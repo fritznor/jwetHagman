@@ -42,7 +42,7 @@ class Hagman:
                 self.jwet = False
                 print("Mesi paske w te jwe nan jwet mo kache an !")
 
-# Exemple d'utilisation
+
 
 bazdone = [
     ("lublorry", "Li se Pwofese Code9Haiti nan kad pwograme ak Python."),
