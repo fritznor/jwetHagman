@@ -1,0 +1,56 @@
+import random
+
+class Hagman:
+    def __init__(self, bazdone):
+        self.bazdone = bazdone
+        self.jwet = True
+
+    def jwe(self):
+        while self.jwet:
+            mo, deskripsyon = random.choice(self.bazdone)
+            mo_devine_an = '*' * len(mo)
+            chans = 3
+
+            print(" BYENVINI NAN JWET MO KACHE AN ")
+            print(f"Mo Kache: {mo_devine_an}")
+            print(f"Deskripsyon: {deskripsyon}")
+
+            while chans > 0 and '*' in mo_devine_an:
+                itilizate = input(f"antre yon let oubyen mo wap devine an  ({chans} chans ki rete ) : ").lower()
+
+                if itilizate == mo:
+                    print(f"Bwavo ! Ou jwenn mo ou tap devine an : {mo}")
+                    mo_devine_an = mo
+                else:
+                    nouvo_mo_devine = ""
+                    for i in range(len(mo)):
+                        if mo[i] == itilizate or mo_devine_an[i] != '*':
+                            nouvo_mo_devine += mo[i]
+                        else:
+                            nouvo_mo_devine += '*'
+                    mo_devine_an = nouvo_mo_devine
+
+                    print(f"let la enkorek oubyen mo a pa bon  : {mo_devine_an}")
+
+                    chans -= 1
+
+            if '*' in mo_devine_an:
+                print(f"ou gentan pase kantite limit chans ou. Mo a se te  : {mo}")
+
+            rejwe_anko = input("eskew vle rejwe anko ?, Peze O pou kontinye oubye N pou kanpe epi femen program nan  (o/n) ").lower()
+            if rejwe_anko != 'o':
+                self.jwet = False
+                print("Mesi paske w te jwe nan jwet mo kache an !")
+
+# Exemple d'utilisation
+
+bazdone = [
+    ("lublorry", "Li se Pwofese Code9Haiti nan kad pwograme ak Python."),
+    ("code9Haiti", "Platfom map aprann pwograme ak python."),
+    ("ajantine", "Ekip kite pedi premye match nan mondyal 2022 eki al fe final a lafrans."),
+    ("messi", "Li gen 7 ballon do, li te jwe baselone, li te pase nan paris, aktyelman jwe inter de miami."),
+    ("bwakale", "yon mo ki pran nesans apati yon mouvman popile an Haiti."),
+]
+
+jwet = Hagman(bazdone)
+jwet.jwe()
